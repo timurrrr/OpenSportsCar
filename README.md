@@ -50,11 +50,12 @@ Steering wheel angle       | 20         |
 Brake pressure             | 50         | ... or "brake pedal position"
 RPM                        | 20         | For ICE cars
 Engine oil temperature     | 1          | For ICE cars
+Engine coolant temperature | 1          | For ICE cars
 Battery charge, %          | 1          | For EVs and hybrids
 Battery power consumption  | 10         | For EVs and hybrids
 
 Cars with outstanding logging capabilities, such as high update rates, detailed channels such as
-tire pressures, IMU, etc. will be called out as "Level 1 ⭐".
+IMU data, individual wheel speeds, tire pressures, etc. will be called out as "Level 1 ⭐".
 
 ### Level 2
 
