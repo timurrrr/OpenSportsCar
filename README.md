@@ -87,7 +87,7 @@ Cars that don't qualify for Tier 1 can qualify for Tier 2 if they provide at lea
 update rate required for Tier 1.
 
 In addition to the connection options required for Tier 1, it's also acceptable to use more
-complicated T-style wiring harnesses, or to splice wiring going between non-safety ECUs.
+complicated T-style wiring harnesses or to splice wiring going between non-safety ECUs.
 
 ### Tier 3
 
@@ -110,7 +110,7 @@ control over whether the CAN data is relayed to the OBD-II by using a toggle in 
 of the infotainment system.
 
 This option should be possible to retrofit to some existing car models over a software update, but
-it's understandable that in some cars this is either infeasible or too complicated to do at scale.
+it's understandable that in other cars this is either infeasible or too complicated to do at scale.
 
 If providing data through the OBD-II port is not an option, there should be an easily accessible
 connector port ([example](https://github.com/timurrrr/ft86/blob/main/can_bus/gen2.md#dcm-connector))
@@ -122,7 +122,7 @@ but anything sent over this port into the car is ignored.
 
 ### User education suggestions
 
-Besides simply exposing the data electronically, car enthusiats also need to be able to interpret
+Besides simply exposing the data electronically, car enthusiasts also need to be able to interpret
 that data correctly.
 [Here](https://github.com/timurrrr/RaceChronoDiyBleDevice/blob/master/can_db/mazda_mx5_nd.md)
 is an example of documentation on how to interpret data available on the CAN bus of a Mazda MX-5.
@@ -130,7 +130,7 @@ is an example of documentation on how to interpret data available on the CAN bus
 Unfortunately, the status quo is that data encoding for every car model has to be
 reverse-engineered, which involves a lot of effort and introduces inaccuracies due to the amount of
 guesswork involved. On top of that, it's hard to effectively spread such inherently incomplete and
-occasionally changing knowledge with other car enthusiasts.
+occasionally changing knowledge to other car enthusiasts.
 
 Instead, makers of sports cars should document the best way to connect third-party performance data
 monitors/loggers and how to decode the data.
@@ -149,6 +149,6 @@ Mazda MX-5 | 2016-2023 (ND) | Tier | [1](https://github.com/timurrrr/RaceChronoD
 Modern Porsches |          | Tier 3 |     | TODO: add details
 Scion FR-S | 2013-2016   | Tier 1 ⭐ | [1](https://github.com/timurrrr/RaceChronoDiyBleDevice/blob/master/can_db/ft86.md) | Abundance of data available over the OBD-II port
 Subaru BRZ | 2013-2020   | Tier 1 ⭐ | [1](https://github.com/timurrrr/RaceChronoDiyBleDevice/blob/master/can_db/ft86.md) | Abundance of data available over the OBD-II port
-Subaru BRZ | 2022+       | Tier 2 | [1](https://github.com/timurrrr/RaceChronoDiyBleDevice/blob/master/can_db/ft86_gen2.md) | Almost Level 1, but requires a somewhat non-trivial T harness
+Subaru BRZ | 2022+       | Tier 2 | [1](https://github.com/timurrrr/RaceChronoDiyBleDevice/blob/master/can_db/ft86_gen2.md) | Almost Level 1, but requires a somewhat non-trivial T-style harness
 Toyota 86/GT86 | 2013-2020 | Tier 1 ⭐ | [1](https://github.com/timurrrr/RaceChronoDiyBleDevice/blob/master/can_db/ft86.md) | Abundance of data available over the OBD-II port
 Toyota GR86 | 2022+      | Tier 1 ⭐ | [1](https://github.com/timurrrr/RaceChronoDiyBleDevice/blob/master/can_db/ft86_gen2.md) | Abundance of data available over the unused connector in the glovebox
