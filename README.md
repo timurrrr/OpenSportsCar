@@ -5,41 +5,41 @@ The mission of OpenSportsCar is to make performance data logging accessible for 
 
 ## Philosophy
 
-Data logging for low level parameters of sports cars has many applications. To name a few, it
+Data logging for low-level parameters of sports cars has many applications. To name a few, it
 unlocks opportunities for performance analysis of cars for high-performance driving education
 (including track days), entry-level competition such as autocross and time trials, as well as for
-third party when developing performance upgrades.
+third parties when developing performance upgrades.
 
-On most modern cars, basic performance logging such as vehicle speed, RPM and accelerator pedal
+On most modern cars, basic performance logging such as vehicle speed, RPM, and accelerator pedal
 position can be logged via a standardized protocol called OBD-II. Unfortunately, that protocol was
-intended for _emissions control_, not performance, and thus it doesn't specify standard PIDs for
+intended for _emissions control_, not performance, and thus, it doesn't specify standard PIDs for
 other important parameters, such as steering angle, brake pressure, fuel level, etc. Furthermore, as
 it uses a request-response model, it also has limited data throughput, further limiting its
-usefulness for performance analysis application.
+usefulness for performance analysis applications.
 
-Most modern cars use CAN bus (or multiple CAN buses) to facilitate communication between their ECUs.
-If it's possible to connect a data logging device directly to the CAN bus, one can expect very high
-refresh rates and completeness of data. Unfortunately, different car manufacturers (and even car
-models from the same manufacturer) use different protocols to communicate data over the CAN bus, and
-in most cases don't document those protocols anywhere. Furthermore, while older cars typically
-exposed the CAN bus via the OBD-II port, many modern cars isolate the two from each other, which
+Most modern cars use the CAN bus (or multiple CAN buses) to facilitate communication between their
+ECUs. If it's possible to connect a data logging device directly to the CAN bus, one can expect very
+high refresh rates and completeness of data. Unfortunately, different car manufacturers (and even
+car models from the same manufacturer) use different protocols to communicate data over the CAN bus
+and, in most cases, don't document those protocols anywhere. Furthermore, while older cars typically
+expose the CAN bus via the OBD-II port, many modern cars isolate the two from each other, which
 means it's necessary to find alternative connection points for data loggers. Some car models have
-hidden unused connectors that have CAN data, while other unfortunately require splicing wires.
-Things get even worse on some cars where all the useful data isn't available on a single CAN bus,
-and requires connecting to multiple CAN buses at the same time.
+hidden unused connectors providing access to the CAN bus, while others, unfortunately, require
+splicing wires. Things get even worse on some cars where all the useful data isn't available on a
+single CAN bus, which requires connecting to multiple CAN buses.
 
 ## OpenSportsCar tiers
 
-Depending on the availability of data and complexity of logging, we propose the following "data
-availability tiers" to categorize different cars:
+Depending on the availability of data and the complexity of setting up logging, we propose the
+following "data availability tiers" to categorize different cars:
 
 ### Tier 1
 
 To qualify for Tier 1, a car should have its performance data available through either the OBD-II
-port, or an easily accessible unused connector
+port, an easily accessible unused connector
 ([example](https://github.com/timurrrr/ft86/blob/main/can_bus/gen2.md#dcm-connector)),
-or an easily accessed simple connector for a non-safety related ECU that allows access to the data
-using a simple T-style wiring harness (e.g. commonly available connectors, at most 5 wires in the
+or an easily accessible simple connector for a non-safety related ECU that allows access to the data
+using a simple T-style wiring harness (i.e. commonly available connectors, at most five wires in the
 harness).
 
 At least the following basic channels must be available with at least the following update rates to
@@ -50,18 +50,18 @@ Data channel | Minimal update rate (Hz) | Comment
 Speed                      | 20         |
 Accelerator pedal position | 20         |
 Steering wheel angle       | 20         |
-Brake pressure             | 50         | ... or "brake pedal position"
-RPM                        | 20         | For ICE cars
+Brake pressure             | 50         | or "brake pedal position"
+RPM                        | 20         | For ICE (Internal Combustion Engine) cars
 Engine oil temperature     | 1          | For ICE cars
 Engine coolant temperature | 1          | For ICE cars
 Battery charge, %          | 1          | For EVs and hybrids
 Battery power consumption  | 10         | For EVs and hybrids
 
 Note that all these data channels should be available with those update rates (or higher) _at the
-same time_. While the OBD-II protocol on some cars can provide ~20 Hz update rate for _one_ channel,
-in order to achieve Tier 1 the car needs to be able to provide all data at once.
+same time_. While the OBD-II protocol on some cars can provide a ~20 Hz update rate for _one_
+channel, in order to achieve Tier 1, the car needs to be able to provide all data at once.
 
-Cars with outstanding logging capabilities, such as higher update rates, or many additional data
+Cars with outstanding logging capabilities, such as higher update rates or many additional data
 channels available, will be called out as "Tier 1 ⭐".
 
 Here's a list of other useful data channels recommended whenever possible:
@@ -69,7 +69,7 @@ Here's a list of other useful data channels recommended whenever possible:
 Data channel | Minimal update rate (Hz) | Comment
 ------------ | ------------------------ | -------
 Ambient air temperature    | 1          |
-Lateral and logitudinal accelerations | 50 |
+Lateral and longitudinal accelerations | 50 |
 Yaw rate                   | 50         |
 Throttle valve position    | 20         | For ICE cars
 Intake air temperature     | 20         | For ICE cars
@@ -86,8 +86,8 @@ Individual tire pressures  | 1          |
 Cars that don't qualify for Tier 1 can qualify for Tier 2 if they provide at least half the minimal
 update rate required for Tier 1.
 
-Besides the connection options required for Tier 1, it's also acceptable to use more complicated
-T-style wiring harnesses, or to splice wiring going between non-safety ECUs.
+In addition to the connection options required for Tier 1, it's also acceptable to use more
+complicated T-style wiring harnesses, or to splice wiring going between non-safety ECUs.
 
 ### Tier 3
 
@@ -97,48 +97,48 @@ Tier 3 allows splicing wiring between safety-related ECUs.
 
 ### Hardware suggestions
 
-Providing the performance-related CAN data through the OBD-II port is the best option as there are
-many existing performance tools available on the market (such as AIM Solo DL, OBDLink Bluetooth
-dongles, etc.) that allow plug-and-play connectivity at the lowest possible cost to the user.
+Providing the performance-related CAN data through the OBD-II port is the best option, as many
+performance tools (e.g., AIM Solo DL, OBDLink Bluetooth dongles) already available on the market
+provide plug-and-play connectivity at the lowest possible cost to the user.
 
 While it's understandable that car manufacturers want/need to isolate the internal data networks of
-their cars from data sent by potentially malicioius devices plugged into the OBD-II port, this
+their cars from data sent by potentially malicious devices plugged into the OBD-II port, this
 doesn't prevent _relaying_ pre-selected internal data from the internal CAN networks to the OBD-II
-port. If there are concerns over undesired access of OBD-II devices to the underlying data (e.g. an
+port. If there are concerns over undesired access of OBD-II devices to the underlying data (e.g., an
 OBD-II dongle provided by an insurance company shouldn't monitor the RPM?), the user can be given
 control over whether the CAN data is relayed to the OBD-II by using a toggle in the Settings menu
 of the infotainment system.
 
 This option should be possible to retrofit to some existing car models over a software update, but
-it's understandable that in some cars this is either infeasible, or too complicated to do at scale.
+it's understandable that in some cars this is either infeasible or too complicated to do at scale.
 
 If providing data through the OBD-II port is not an option, there should be an easily accessible
 connector port ([example](https://github.com/timurrrr/ft86/blob/main/can_bus/gen2.md#dcm-connector))
-with the CAN bus, 12V power and Ground available to the user. As car manufacturers have the best
-understanding of the CAN bus of the cars that they make, they can make a performance part such as a
-T-style wiring harness that can be installed to provide such a port on an existing car. If desired,
-this port can also be equipped with a simple CAN relay so that data can only be _read_ from the
-port, but anything sent over this port into the car is ignored.
+with the CAN bus, 12V power, and Ground available to the user. As car manufacturers have the best
+understanding of the CAN bus of their cars, they can make a performance part such as a T-style
+wiring harness that can be installed to provide such a port on an existing car. If desired, this
+port can also be equipped with a simple CAN relay so that data can only be _read_ from the port,
+but anything sent over this port into the car is ignored.
 
 ### User education suggestions
 
-Besides simply exposing the data electronically, it's also important for car enthusiats to be able
-to interpret that data correctly.
+Besides simply exposing the data electronically, car enthusiats also need to be able to interpret
+that data correctly.
 [Here](https://github.com/timurrrr/RaceChronoDiyBleDevice/blob/master/can_db/mazda_mx5_nd.md)
 is an example of documentation on how to interpret data available on the CAN bus of a Mazda MX-5.
 
-Unfortunately, the status quo is that data encoding for every car model has to be reverse
-engineered, which involves a lot of effort, introduces inaccuraccies due to the amount of guesswork
-involved, and on top of that it's hard to effective spread such knowledge with other members of the
-car community.
+Unfortunately, the status quo is that data encoding for every car model has to be
+reverse-engineered, which involves a lot of effort and introduces inaccuracies due to the amount of
+guesswork involved. On top of that, it's hard to effectively spread such inherently incomplete and
+occasionally changing knowledge with other car enthusiasts.
 
-Instead, makers of sports cars should document what's the best way to connect third party
-performance data monitors / loggers and how to decode the data.
+Instead, makers of sports cars should document the best way to connect third-party performance data
+monitors/loggers and how to decode the data.
 
 ## Data availability tiers table
 
 Below is a table that specifies the tiers that some car models qualify for. Note that any of these
-cars can be promoted to a better tier as more information about them is discovered, or in case of
+cars can be promoted to a better tier as more information about them is discovered or in case of
 software and/or hardware updates.
 
 Car model  | Model years | Tier | Links | Notes
