@@ -71,15 +71,21 @@ Data channel | Minimal update rate (Hz) | Comment
 Ambient air temperature    | 1          |
 Lateral and longitudinal accelerations | 50 |
 Yaw rate                   | 50         |
+Torque demand              | 20         | For ICE cars
+Intake air temperature     | 5          | For ICE cars
 Throttle valve position    | 20         | For ICE cars
-Intake air temperature     | 20         | For ICE cars
 Intake manifold pressure   | 20         | For ICE cars
 Lambda                     | 20         | For ICE cars
+Timing advance/retardation | 20         | For ICE cars
+Valve timing               | 20         | For ICE cars
+Valve lift                 | 20         | For ICE cars
 Engine oil pressure        | 20         | For ICE cars
 Fuel level                 | 1          | For ICE cars
 Gear                       | 20         | For ICE cars
 Individual wheel speeds    | 50         |
 Individual tire pressures  | 1          |
+
+Other relevant data channels are welcome as well!
 
 ### Tier 2
 
