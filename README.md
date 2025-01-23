@@ -174,3 +174,4 @@ Subaru BRZ | 2013-2020   | Tier 1 ⭐ | [1](https://github.com/timurrrr/RaceChro
 Subaru BRZ | 2022+       | Tier 2 | [1](https://github.com/timurrrr/RaceChronoDiyBleDevice/blob/master/can_db/ft86_gen2.md) | Almost Level 1, but requires a somewhat non-trivial T-style harness
 Toyota 86/GT86 | 2013-2020 | Tier 1 ⭐ | [1](https://github.com/timurrrr/RaceChronoDiyBleDevice/blob/master/can_db/ft86.md) | Abundance of data available over the OBD-II port
 Toyota GR86 | 2022+      | Tier 1 ⭐ | [1](https://github.com/timurrrr/RaceChronoDiyBleDevice/blob/master/can_db/ft86_gen2.md) | Abundance of data available over the unused connector in the glovebox
+Toyota Supra | A90       | Tier 2 |     | Simple T-style harness plugged into the instrument cluster.
