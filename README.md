@@ -28,6 +28,21 @@ hidden unused connectors providing access to the CAN bus, while others, unfortun
 splicing wires. Things get even worse on some cars where all the useful data isn't available on a
 single CAN bus, which requires connecting to multiple CAN buses.
 
+## Related projects
+
+DBC is a file format that describes CAN data mapping
+([here's a good write-up](https://docs.openvehicles.com/en/latest/components/vehicle_dbc/docs/dbc-primer.html).
+The goal of OpenSportsCar is format-agnostic: once _some_ way to acquire and interpret CAN data is
+established, tech-savvy enthusiasts can figure out how to translate it to the DBC format, or
+whatever the format their data logger uses. Of course as DBC is used widely, it's the best if data
+mapping is eventually documented using that format.
+
+See also [opendbc](https://github.com/commaai/opendbc) which has
+[data mappings for 300+ cars](https://github.com/commaai/opendbc/blob/master/docs/CARS.md)
+as well as provides some ready(ish) to use wiring harnesses. Unfortunately, their primary focus is
+AI / driving assistance, so many "enthusiast" cars are missing, as well as performance-related
+parameters.
+
 ## OpenSportsCar tiers
 
 Depending on the availability of data and the complexity of setting up logging, we propose the
