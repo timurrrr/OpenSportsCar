@@ -165,6 +165,7 @@ software and/or hardware updates.
 Car model  | Model years | Tier | Links | Notes
 ---------- | ----------- | ---- | ----- | -----
 BMW F-chassis |          | Tier 3 |     | TODO: add details
+Hyundai N cars |         | Tier 3 |     | Only a handful of people figured out how to log data, and it requires splicing wires in the Body Control Module harness. There might be a better way.
 Mazda MX-5 | 2005-2015 (NC) | Tier 1 ⭐ | [1](https://github.com/timurrrr/RaceChronoDiyBleDevice/blob/master/can_db/mazda_mx5_nc.md) | Abundance of data available over the OBD-II port
 Mazda MX-5 | 2016-2023 (ND) | Tier | [1](https://github.com/timurrrr/RaceChronoDiyBleDevice/blob/master/can_db/mazda_mx5_nd.md) | Abundance of data available over the OBD-II port. ND3 (2024+) is not tiered yet.
 Modern Porsches |          | Tier 3 |     | TODO: add details
