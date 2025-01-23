@@ -108,11 +108,14 @@ Cars that don't qualify for Tier 1 can qualify for Tier 2 if they provide at lea
 update rate required for Tier 1.
 
 In addition to the connection options required for Tier 1, it's also acceptable to use more
-complicated T-style wiring harnesses or to splice wiring going between non-safety ECUs.
+complicated T-style wiring harnesses or to splice wiring going between non-safety ECUs. The
+connectors and/or wires should be reasonably accessible (i.e. require simple removal of only 1-2
+interior trim panels).
 
 ### Tier 3
 
-Tier 3 allows splicing wiring between safety-related ECUs.
+Tier 3 allows splicing wiring between safety-related ECUs and/or taking many pieces of the interior
+trim.
 
 ## Suggestions to car manufacturers
 
